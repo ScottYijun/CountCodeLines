@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_pixmap.load(":/background.jpg");
     m_pixmap = m_pixmap.scaled(800, 600);
     this->setToolTip("代码行统计工具");
+	
     initTableWidget();
     initView();
     connect(ui->pushButton_openFloder, SIGNAL(clicked()), this, SLOT(slotOpenDir()));
