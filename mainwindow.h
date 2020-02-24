@@ -18,10 +18,14 @@ using std::list;
 
 typedef struct FileInformation
 {
-    QString fileName;   //文件名
-    qint64 fileSize;    //文件大小
-    quint32 fileLine;   //代码行数
-    QString fileDir;    //文件所在目录
+    QString fileName;       //文件名
+    QString fileType;       //文件类型
+    qint64 fileSize;        //文件大小
+    qint32 totalLines;      //总行数
+    quint32 codeLines;      //代码行数
+    quint32 commentLines;   //注释行数
+    quint32 emptyLines;     //空白行数
+    QString filePath;       //文件路径
 }FileInfor;
 
 
@@ -36,25 +40,22 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QFileInfoList getFileList(QString path);
     void initView();
     void initTableWidget();
-    void initFileInformation();
+    bool checkFile(const QString &fileName);
 
-    void vectorSum();
-    void vectorAccumulate();
-    void vectorIterator();
+    void countCode(const QString &filePath);
+    void countCode(const QStringList &files);
+    void countCode(const QString &fileName, int &lineCode, int &lineBlank, int &lineNotes);
 
 
 public slots:
     void slotOpenDir();                     //打开目录
     void slotOpenFile();                    //打开文件
-    void slotVectorFilenameSizeLines();     //显示文件名，大小，行数, 路径
-    void slotListFilenameSizeLines();       //显示文件名，大小，行数, 路径
-    void slotMapFilenameSize();             //显示文件名，大小
-    void slotMultimFilenameSize();          //显示文件名，大小
+    void slotClearResult();                 //清理结果
 
 protected:
     virtual void paintEvent(QPaintEvent *event);
@@ -64,11 +65,7 @@ private:
     QString floder;
     int totalLines;
     QPixmap m_pixmap;
-    vector<FileInfor> vecFileInfor;
-    list<FileInfor> listFileInfor;
-    vector<qint64> vecFileSize;
-    map<QString, quint64> mapFileInfor;
-    multimap<QString, quint64> multimapFileInfor;
+    QStringList m_listFile;
 };
 
 #endif // MAINWINDOW_H
