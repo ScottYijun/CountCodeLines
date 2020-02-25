@@ -58,19 +58,6 @@ void MainWindow::initView()
 
 void MainWindow::initTableView()
 {
-//    m_pStandardModel->clear();
-//    m_pStandardModel->setColumnCount(8);
-//    //文件名， 类型，大小，总行数，代码行数，注释行数，空白行数，路径
-//    m_pStandardModel->setHeaderData(0, Qt::Horizontal, tr("fileName"));
-//    m_pStandardModel->setHeaderData(1, Qt::Horizontal, tr("type"));
-//    m_pStandardModel->setHeaderData(2, Qt::Horizontal, tr("size"));
-//    m_pStandardModel->setHeaderData(3, Qt::Horizontal, tr("total"));
-//    m_pStandardModel->setHeaderData(4, Qt::Horizontal, tr("codeLines"));
-//    m_pStandardModel->setHeaderData(5, Qt::Horizontal, tr("noteLines"));
-//    m_pStandardModel->setHeaderData(6, Qt::Horizontal, tr("blankLines"));
-//    m_pStandardModel->setHeaderData(7, Qt::Horizontal, tr("path"));
-
-
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -162,26 +149,19 @@ void MainWindow::slotClearResult()
     ui->label_percentBlank->setText("0%");
 }
 
-//http://www.cnblogs.com/findumars/p/6006129.html
-//http://www.cnblogs.com/zhoug2020/p/3789076.html
-
-
-
 
 //找出目录下所有符合条件的文件
 void MainWindow::countCode(const QString &filePath)
 {
-    qDebug() << "filePath========================" << filePath;
     QDir dir(filePath);
     foreach (QFileInfo fileInfo, dir.entryInfoList()) //entryInfoList()返回QFileInfoList类型的对象
     {
         if(fileInfo.isFile())
         {
             QString strFileName = fileInfo.fileName();
-            //qDebug() << "strFileName========================" << strFileName;
+            
             if(checkFile(strFileName)) //检测符合条件的文件
             {
-                qDebug() << "fileInfo.filePath========================" << fileInfo.filePath();
                 m_listFile << fileInfo.filePath();
             }
         }
@@ -204,9 +184,7 @@ void MainWindow::countCode(const QStringList &files)
     int lineBlank;  //空行数
     int lineNotes;  //注释行数
     int nCount = files.count();
-    qDebug() << "nCount=====================" << nCount;
-
-
+  
     quint32 totalLines = 0;
     quint32 totalBytes = 0;
     quint32 totalCodes = 0;
@@ -216,8 +194,7 @@ void MainWindow::countCode(const QStringList &files)
     for(int i = 0; i < nCount; ++i)
     {
         QFileInfo fileInfo(files.at(i));
-        qDebug() << "files.at(" << i << ")===" << files.at(i);
-        qDebug() << "fileInfo.filePath===" << fileInfo.filePath();
+       
         countCode(fileInfo.filePath(), lineCode, lineBlank, lineNotes);
 
         int lineAll = lineCode + lineBlank + lineNotes;
@@ -253,11 +230,6 @@ void MainWindow::countCode(const QStringList &files)
         totalCodes += lineCode;
         totalNotes += lineNotes;
         totalBlanks += lineBlank;
-
-//        if(i % 100 == 0)
-//        {
-//            qApp->processEvents();//防止假死
-//        }
     }
     //显示统计结果
     m_pTableModel->updateData(m_listModel);
@@ -281,7 +253,7 @@ void MainWindow::countCode(const QStringList &files)
     //空行所占百分比
     percent = ((double)totalBlanks / totalLines) * 100;
     ui->label_percentBlank->setText(QString("%1%").arg(percent, 5, 'f', 2, QChar(' ')));
-    qDebug() << "files========================" << files;
+   
 }
 
 void MainWindow::countCode(const QString &fileName, int &lineCode, int &lineBlank, int &lineNotes)
@@ -296,7 +268,7 @@ void MainWindow::countCode(const QString &fileName, int &lineCode, int &lineBlan
         while(!out.atEnd())
         {
             line = out.readLine();
-            //qDebug() << "line=====" << line;
+           
             //移除前面的空行
             if(line.startsWith(" "))
             {
@@ -334,15 +306,15 @@ void MainWindow::countCode(const QString &fileName, int &lineCode, int &lineBlan
             }
         }
     }
-    qDebug() << "lineCode========================" << lineCode;
+    
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-    //return;
+   
     QPainter painter(this);
     painter.drawPixmap(QRect(0, 0, this->width(), this->height()), m_pixmap);
-    //painter.drawText()
+  
 }
 
 
