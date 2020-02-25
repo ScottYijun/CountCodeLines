@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>background.jpg</file>
+        <file>res/checked.png</file>
+        <file>res/checkedHover.png</file>
+        <file>res/checkedPressing.png</file>
+        <file>res/partiallyChecked.png</file>
+        <file>res/partiallyCheckedHover.png</file>
+        <file>res/partiallyCheckedPressing.png</file>
+        <file>res/unchecked.png</file>
+        <file>res/uncheckedHover.png</file>
+        <file>res/uncheckedPressing.png</file>
+    </qresource>
+</RCC>
