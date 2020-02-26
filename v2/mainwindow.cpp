@@ -131,7 +131,7 @@ void MainWindow::slotOpenDir()
         ui->lineEdit_dir->setText(path);
         m_listFile.clear();
         countCode(path);
-        qDebug() << "m_listFile======" << m_listFile;
+  
         countCode(m_listFile);
     }
 }
@@ -161,26 +161,20 @@ void MainWindow::slotClearResult()
     ui->label_percentBlank->setText("0%");
 }
 
-//http://www.cnblogs.com/findumars/p/6006129.html
-//http://www.cnblogs.com/zhoug2020/p/3789076.html
-
-
-
 
 //找出目录下所有符合条件的文件
 void MainWindow::countCode(const QString &filePath)
 {
-    qDebug() << "filePath========================" << filePath;
+  
     QDir dir(filePath);
     foreach (QFileInfo fileInfo, dir.entryInfoList()) //entryInfoList()返回QFileInfoList类型的对象
     {
         if(fileInfo.isFile())
         {
             QString strFileName = fileInfo.fileName();
-            //qDebug() << "strFileName========================" << strFileName;
+            
             if(checkFile(strFileName)) //检测符合条件的文件
             {
-                qDebug() << "fileInfo.filePath========================" << fileInfo.filePath();
                 m_listFile << fileInfo.filePath();
             }
         }
@@ -203,9 +197,7 @@ void MainWindow::countCode(const QStringList &files)
     int lineBlank;  //空行数
     int lineNotes;  //注释行数
     int nCount = files.count();
-    qDebug() << "nCount=====================" << nCount;
-
-
+  
     quint32 totalLines = 0;
     quint32 totalBytes = 0;
     quint32 totalCodes = 0;
@@ -294,7 +286,6 @@ void MainWindow::countCode(const QStringList &files)
     //空行所占百分比
     percent = ((double)totalBlanks / totalLines) * 100;
     ui->label_percentBlank->setText(QString("%1%").arg(percent, 5, 'f', 2, QChar(' ')));
-    qDebug() << "files========================" << files;
 }
 
 void MainWindow::countCode(const QString &fileName, int &lineCode, int &lineBlank, int &lineNotes)
@@ -309,7 +300,7 @@ void MainWindow::countCode(const QString &fileName, int &lineCode, int &lineBlan
         while(!out.atEnd())
         {
             line = out.readLine();
-            //qDebug() << "line=====" << line;
+            
             //移除前面的空行
             if(line.startsWith(" "))
             {
@@ -347,15 +338,13 @@ void MainWindow::countCode(const QString &fileName, int &lineCode, int &lineBlan
             }
         }
     }
-    qDebug() << "lineCode========================" << lineCode;
+   
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-    //return;
     QPainter painter(this);
     painter.drawPixmap(QRect(0, 0, this->width(), this->height()), m_pixmap);
-    //painter.drawText()
 }
 
 
