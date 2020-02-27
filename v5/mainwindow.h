@@ -26,11 +26,6 @@ public:
     void initTableView();
     void initData();
     void initConnect();
-    bool checkFile(const QString &fileName);
-
-    void countCode(const QString &filePath);
-    void countCode(const QStringList &files);
-    void countCode(const QString &fileName, int &lineCode, int &lineBlank, int &lineNotes);
 
 
 public slots:

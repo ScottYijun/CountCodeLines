@@ -10,5 +10,6 @@
         <file>res/unchecked.png</file>
         <file>res/uncheckedHover.png</file>
         <file>res/uncheckedPressing.png</file>
+        <file>CountCodeLines_zh.qm</file>
     </qresource>
 </RCC>

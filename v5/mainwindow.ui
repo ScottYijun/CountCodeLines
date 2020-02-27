@@ -54,7 +54,7 @@
            </font>
           </property>
           <property name="text">
-           <string>文件数</string>
+           <string>file Count</string>
           </property>
           <property name="openExternalLinks">
            <bool>true</bool>
@@ -108,7 +108,7 @@
            </font>
           </property>
           <property name="text">
-           <string>代码行数</string>
+           <string>code line</string>
           </property>
          </widget>
         </item>
@@ -181,7 +181,7 @@
            </font>
           </property>
           <property name="text">
-           <string>文件</string>
+           <string>file</string>
           </property>
          </widget>
         </item>
@@ -260,7 +260,7 @@
            </font>
           </property>
           <property name="text">
-           <string>字节数</string>
+           <string>size</string>
           </property>
          </widget>
         </item>
@@ -311,7 +311,7 @@
            </font>
           </property>
           <property name="text">
-           <string>注释行数</string>
+           <string>note line</string>
           </property>
          </widget>
         </item>
@@ -384,7 +384,7 @@
            </font>
           </property>
           <property name="text">
-           <string>目录</string>
+           <string>dir</string>
           </property>
          </widget>
         </item>
@@ -463,7 +463,7 @@
            </font>
           </property>
           <property name="text">
-           <string>总行数</string>
+           <string>total line</string>
           </property>
          </widget>
         </item>
@@ -514,7 +514,7 @@
            </font>
           </property>
           <property name="text">
-           <string>空白行数</string>
+           <string>blank line</string>
           </property>
          </widget>
         </item>
@@ -587,7 +587,7 @@
            </font>
           </property>
           <property name="text">
-           <string>过滤</string>
+           <string>filter</string>
           </property>
          </widget>
         </item>

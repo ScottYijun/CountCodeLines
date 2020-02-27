@@ -30,5 +30,6 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui
 
+TRANSLATIONS += CountCodeLines_zh.ts
 RESOURCES += \
     res.qrc
